@@ -1,0 +1,6 @@
+exit
+docker logs approval-service
+db.<collection_name>.find().pretty();
+show collections;
+use approval-service;
+show dbs;

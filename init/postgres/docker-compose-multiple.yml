@@ -1,0 +1,37 @@
+version: '3.9'
+
+services:
+  room-db:
+    image: postgres:latest
+    container_name: room-db-single
+    ports:
+      - "5434:5432"
+    environment:
+      POSTGRES_DB: roomdb
+      POSTGRES_USER: roomuser
+      POSTGRES_PASSWORD: roompassword
+    volumes:
+      - ./data/room:/var/lib/postgresql/data
+      - ./init/postgres/init/room/init.sql:/docker-entrypoint-initdb.d/init.sql
+
+  user-db:
+    image: postgres:latest
+    container_name: user-db-single
+    ports:
+      - "5435:5432"
+    environment:
+      POSTGRES_DB: userdb
+      POSTGRES_USER: useruser
+      POSTGRES_PASSWORD: userpassword
+    volumes:
+      - ./data/user:/var/lib/postgresql/data
+      - ./init/postgres/init/user/init.sql:/docker-entrypoint-initdb.d/init.sql
+
+  pgadmin:
+    image: dpage/pgadmin4
+    ports:
+      - "8081:80"
+    container_name: pgadmin-single
+    environment:
+      PGADMIN_DEFAULT_EMAIL: user@domain.ca
+      PGADMIN_DEFAULT_PASSWORD: password
