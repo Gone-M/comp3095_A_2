@@ -18,10 +18,9 @@ public class SecurityConfig {
         return (exchange, chain) -> {
             String path = exchange.getRequest().getPath().value();
             if (path.startsWith("/swagger-ui") || path.startsWith("/v3/api-docs")) {
-                return chain.filter(exchange); // Allow swagger paths
+                return chain.filter(exchange);
             }
-            // Add custom logic for authorization (e.g., headers, tokens)
-            return chain.filter(exchange); // Let other requests pass
+            return chain.filter(exchange);
         };
     }
 
