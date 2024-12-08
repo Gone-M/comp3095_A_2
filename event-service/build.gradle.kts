@@ -19,6 +19,8 @@ configurations {
     }
 }
 
+tasks.register("PrepareKotlinBuildScriptModel") {}
+
 repositories {
     mavenCentral()
 }

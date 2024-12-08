@@ -5,6 +5,8 @@ import ca.gbc.roomservice.service.RoomService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.http.HttpStatus;
+
 
 import java.util.List;
 import java.util.Optional;
@@ -28,8 +30,8 @@ public class RoomController {
     }
 
 
-
     @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
     public Room createRoom(@RequestBody Room room) {
         return roomService.createRoom(room);
     }

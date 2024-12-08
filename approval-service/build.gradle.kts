@@ -13,11 +13,14 @@ java {
 	}
 }
 
+
 configurations {
 	compileOnly {
 		extendsFrom(configurations.annotationProcessor.get())
 	}
 }
+
+tasks.register("prepareKotlinBuildScriptModel"){}
 
 repositories {
 	mavenCentral()
